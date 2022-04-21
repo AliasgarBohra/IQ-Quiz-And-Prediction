@@ -4,70 +4,44 @@
   <head>
     <meta charset="utf-8">
     <style>
-
         form{
-           margin: 50px; 
-          
+           margin: 50px;
         }
-
+        .field{
+          padding: 10px
+        }
     </style>
   </head>
+
   <body>
     {% include "quiz/navbar.html" %}
- 
-
-
-<br><br><br>
-<h3 style="text-align: center;color: red;">STUDENT SIGNUP</h3>
-<form method="POST" autocomplete="off" enctype="multipart/form-data">
-    {% csrf_token %}
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="username">Username</label>
-        {% render_field userForm.username|attr:'required:true'  class="form-control" placeholder="username" %}
-      </div>
-      <div class="form-group col-md-6">
-        <label for="inputPassword4">Password</label>
-        {% render_field userForm.password|attr:'required:true'  class="form-control" placeholder="password" %}
-      </div>
-    </div>
-
-    <div class="form-row">
-        <div class="form-group col-md-6">
-          <label for="first_name">First Name</label>
-          {% render_field userForm.first_name|attr:'required:true'  class="form-control" placeholder="First Name" %}
+    <h3 style="text-align: center; margin-top: 100px;">STUDENT SIGNUP</h3>
+    <form method="POST" autocomplete="off" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-row">
+          <div class="form-group col-md-6 field">
+            <label for="username">Username:</label>
+            {% render_field userForm.username|attr:'required:true'  class="form-control" placeholder="Username" %}
+          </div>
+          <div class="form-group col-md-6 field">
+            <label for="inputPassword4">Password:</label>
+            {% render_field userForm.password|attr:'required:true'  class="form-control" placeholder="Password" %}
+          </div>
         </div>
-        <div class="form-group col-md-6">
-          <label for="last_name">Last Name</label>
-          {% render_field userForm.last_name|attr:'required:true'  class="form-control" placeholder="Last Name" %}
-        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6 field">
+            <label for="mobile">Age:</label>
+            {% render_field studentForm.mobile|attr:'required:true'  class="form-control" placeholder="Age" %}
+          </div>
+            <div class="form-group col-md-6 field">
+              <label for="profile_pic">Profile Picture:</label>
+              {% render_field studentForm.profile_pic|attr:'required:true' class="form-control" placeholder="" %}
+            </div>
+          </div>
+      <div style="text-align: center; padding: 10px;">
+          <button type="submit" class="btn btn-primary" style="background-color: grey; border: 2px solid black;">Sign Up</button>
       </div>
-
-      <div class="form-row">
-        <div class="form-group col-md-6">
-          <label for="mobile">Mobile</label>
-          {% render_field studentForm.mobile|attr:'required:true'  class="form-control" placeholder="Mobile" %}
-        </div>
-        <div class="form-group col-md-6">
-          <label for="address">Address</label>
-          {% render_field studentForm.address|attr:'required:true'  class="form-control" placeholder="Address" %}
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="form-group col-md-12">
-          <label for="profile_pic">Profile Picture</label>
-          {% render_field studentForm.profile_pic|attr:'required:true' class="form-control" placeholder="" %}
-        </div>
-        
-      </div>
-
-
-    <button type="submit" class="btn btn-primary">Sign Up</button>
-  </form>
-
-
-<br><br>
-{% include "quiz/footer.html" %}
+    </form>
+    {% include "quiz/footer.html" %}
   </body>
 </html>
